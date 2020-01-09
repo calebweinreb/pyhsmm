@@ -271,7 +271,10 @@ class _WeakLimitHDPHMMTransitionsBase(_HMMTransitionsBase):
             self.N = num_states
 
         self.alpha = alpha
-        self.beta_obj = Multinomial(alpha_0=gamma,K=self.N,weights=beta)
+        if type(gamma) in [int,float]:
+            self.beta_obj = Multinomial(alpha_0=gamma,K=self.N,weights=beta)
+        else:
+            self.beta_obj = Multinomial(alphav_0=gamma,K=self.N,weights=beta)
 
         super(_WeakLimitHDPHMMTransitionsBase,self).__init__(
                 num_states=self.N,alpha=alpha,
