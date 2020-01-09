@@ -877,6 +877,16 @@ class WeakLimitStickyHDPHMM(WeakLimitHDPHMM):
         super(WeakLimitStickyHDPHMM,self).__init__(
                 obs_distns=obs_distns,trans_distn=trans_distn,**kwargs)
 
+class WeakLimitStickyBiasedHDPHMM(WeakLimitHDPHMM):
+    # TODO concentration resampling, too!
+    def __init__(self,obs_distns,
+            kappa=None,alpha=None,gamma=None,**kwargs):
+        trans_distn = transitions.WeakLimitStickyHDPHMMTransitions(
+                num_states=len(obs_distns),
+                kappa=kappa,alpha=alpha,gamma=gamma,trans_matrix=trans_matrix)
+        super(WeakLimitStickyHDPHMM,self).__init__(
+                obs_distns=obs_distns,trans_distn=trans_distn,**kwargs)
+
 
 class HMMPossibleChangepoints(_HMMPossibleChangepointsMixin,HMM):
     pass
