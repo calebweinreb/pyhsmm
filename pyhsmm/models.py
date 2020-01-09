@@ -884,7 +884,7 @@ class WeakLimitStickyBiasedHDPHMM(WeakLimitHDPHMM):
         trans_distn = transitions.WeakLimitStickyHDPHMMTransitions(
                 num_states=len(obs_distns),
                 kappa=kappa,alpha=alpha,gamma=gamma,trans_matrix=trans_matrix)
-        super(WeakLimitStickyHDPHMM,self).__init__(
+        super(WeakLimitStickyBiasedHDPHMM,self).__init__(
                 obs_distns=obs_distns,trans_distn=trans_distn,**kwargs)
 
 
